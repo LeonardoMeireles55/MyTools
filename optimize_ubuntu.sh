@@ -46,8 +46,4 @@ if [ -d "/sys/block/sda/queue/scheduler" ]; then
   echo deadline > /sys/block/sda/queue/scheduler
 fi
 
-# Enable performance mode for CPU (requires intel_pstate or AMD equivalent)
-echo "Enabling performance mode for CPU..."
-cpufreq-set -g performance
-
 echo "Optimization complete. Reboot the system to apply changes."
