@@ -12,7 +12,8 @@ docker container prune -f
 
 # Remove unused volumes
 echo "Removing unused volumes..."
-docker volume prune -f
+docker volume ls -q | grep -v -E "qualitylab-pro-backend_mysql-volume|quality-lab-pro-react-plotly_qualitylab_node_modules|quality-lab-pro-react-plotly_qualitylab_public" | xargs -r docker volume rm
+
 
 # Remove unused images
 echo "Removing unused images..."
