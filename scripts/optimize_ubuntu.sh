@@ -38,10 +38,6 @@ update-grub
 echo "Installing lightweight tools..."
 apt install -y htop iotop preload
 
-echo "Setting swappiness to 60..."
-sysctl vm.swappiness=60
-echo "vm.swappiness=60" >> /etc/sysctl.conf
-
 # Configure CPU governor for single core
 echo "Configuring CPU governor..."
 apt install -y cpufrequtils
