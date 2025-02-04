@@ -6,7 +6,7 @@ if [ "$EUID" -ne 0 ]; then
   exit
 fi
 
-echo "Optimizing Ubuntu for 1-core CPU and 2GB RAM..."
+echo "Optimizing Ubuntu..."
 
 # Update and upgrade the system
 echo "Updating system packages..."
@@ -25,7 +25,6 @@ echo "Disabling more services for low-resource system..."
 systemctl disable snapd.service
 systemctl disable apache2.service
 systemctl disable mysql.service
-systemctl disable docker.service
 systemctl disable NetworkManager-wait-online.service
 
 # Enable zswap for better memory management
@@ -38,21 +37,15 @@ update-grub
 echo "Installing lightweight tools..."
 apt install -y htop iotop preload
 
-# Configure CPU governor for single core
-echo "Configuring CPU governor..."
-apt install -y cpufrequtils
-echo 'GOVERNOR="performance"' | tee /etc/default/cpufrequtils
-systemctl restart cpufrequtils
-
 # Additional memory optimizations
 echo "Configuring additional memory settings..."
-echo "vm.vfs_cache_pressure=50" >> /etc/sysctl.conf
-echo "vm.dirty_ratio=10" >> /etc/sysctl.conf
-echo "vm.dirty_background_ratio=5" >> /etc/sysctl.conf
+echo "vm.vfs_cache_pressure=50" >>/etc/sysctl.conf
+echo "vm.dirty_ratio=10" >>/etc/sysctl.conf
+echo "vm.dirty_background_ratio=5" >>/etc/sysctl.conf
 
 # Disable unnecessary kernel modules
-echo "blacklist bluetooth" >> /etc/modprobe.d/blacklist.conf
-echo "blacklist thunderbolt" >> /etc/modprobe.d/blacklist.conf
+echo "blacklist bluetooth" >>/etc/modprobe.d/blacklist.conf
+echo "blacklist thunderbolt" >>/etc/modprobe.d/blacklist.conf
 
 # Apply sysctl changes
 sysctl -p
@@ -60,7 +53,7 @@ sysctl -p
 # Optimize I/O scheduler for SSDs
 if [ -d "/sys/block/sda/queue/scheduler" ]; then
   echo "Setting I/O scheduler to deadline for SSDs..."
-  echo deadline > /sys/block/sda/queue/scheduler
+  echo deadline >/sys/block/sda/queue/scheduler
 fi
 
 echo "Optimization complete. Reboot the system to apply changes."

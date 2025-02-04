@@ -1,45 +1,56 @@
 # MyTools
 
-A collection of system management and optimization scripts for Linux/Ubuntu environments.
+MyTools is a collection of scripts designed for system maintenance, monitoring, and optimization on Linux/Ubuntu systems. It also includes an interactive menu interface (main.sh) to easily launch any of the available scripts.
 
-## Description
+## Overview
 
-This repository contains various shell scripts for system maintenance, monitoring, and optimization tasks.
+This repository provides various shell scripts that help you:
+- Monitor system performance (CPU, memory, disk, processes).
+- Configure and manage swap space to enhance system performance.
+- Optimize your Ubuntu installation by disabling unneeded services and tuning kernel parameters.
+- Clean up system resources such as Docker containers, cache, and unused packages.
+- Fix common script formatting issues.
 
 ## Installation
 
-Clone the repository:
+1. Clone the repository:
 ```bash
-git clone https://github.com/yourusername/MyTools.git
-cd MyTools
-chmod +x scripts/*.sh
+git clone https://github.com/LeonardoMeireles55/my_tools.git
+cd my_tools
+sudo chmod +x ./install.sh
+sudo ./install.sh
 ```
-
-## Available Scripts
-
-### System Monitoring
-- `scripts/top_processes_by_ram.sh` - Display top memory-consuming processes and memory statistics
-- `scripts/system_statistics_monitor.sh` - Comprehensive system monitoring including CPU, memory, disk, and process statistics
-
-### System Optimization
-- `scripts/optimize_ubuntu.sh` - Optimize Ubuntu for systems with limited resources (2-core CPU and 2GB RAM)
-- `scripts/swapping_config.sh` - Configure and manage swap space
-- `scripts/cleanup_system.sh` - Clean up system resources including Docker containers, system cache, and APT packages
 
 ## Usage
 
 Run any script using:
 ```bash
 sudo ./scripts/script_name.sh
+
+## Scripts Available
+### System Monitoring
+- `scripts/top_processes_by_ram.sh` - Displays the processes consuming the most memory and memory statistics.
+- `scripts/system_statistics_monitor.sh` - Comprehensive system monitoring, including CPU, memory, disk, and process statistics.
+
+### System Optimization
+- `scripts/optimize_ubuntu.sh` - Optimizes Ubuntu for systems with limited resources.
+- `scripts/swapping_config.sh` - Configures and manages swap space.
+- `scripts/cleanup_system.sh` - Cleans up system resources, including Docker containers, system cache, and APT packages.
 ```
 
-Note: Some scripts require root privileges to execute properly.
+To access the interactive menu, run:
+```bash
+sudo ./main.sh
+```
+
+Note: Some scripts require root privileges to execute correctly.
 
 ## Project Structure
 
 ```
 MyTools/
 ├── README.md
+├── main.sh
 └── scripts/
     ├── cleanup_system.sh
     ├── optimize_ubuntu.sh

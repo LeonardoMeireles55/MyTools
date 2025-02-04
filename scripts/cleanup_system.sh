@@ -21,7 +21,7 @@ echo "      Starting System Cleanup        "
 echo "====================================="
 echo "Clearing system cache..."
 sync
-echo 3 > /proc/sys/vm/drop_caches
+echo 3 >/proc/sys/vm/drop_caches
 
 echo "Memory usage after cleanup:"
 free -h

@@ -13,7 +13,7 @@ vmstat 1 1
 
 echo -e "\n=== CPU Information ==="
 echo "CPU Usage:"
-top -bn1 | grep "Cpu(s)" 
+top -bn1 | grep "Cpu(s)"
 echo -e "\nLoad Average:"
 uptime
 
@@ -23,11 +23,9 @@ df -h
 echo -e "\n=== Process Statistics ==="
 echo "Total Processes:"
 ps aux | wc -l
-echo -e "\nTop 5 Memory-Consuming Processes:"
-ps aux --sort=-%mem | head -6
 
 echo -e "\n=== System Memory Details ==="
-cat /proc/meminfo | grep -E "MemTotal|MemFree|MemAvailable|SwapTotal|SwapFree"
+cat /proc/meminfo | grep -E "Mem|Swap"
 
 echo -e "\n=== Current Swappiness ==="
 cat /proc/sys/vm/swappiness
