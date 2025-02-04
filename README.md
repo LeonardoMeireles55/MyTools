@@ -1,4 +1,4 @@
-# MyTools
+# my_bash_tools
 
 MyTools is a collection of scripts designed for system maintenance, monitoring, and optimization on Linux/Ubuntu systems. It also includes an interactive menu interface (main.sh) to easily launch any of the available scripts.
 

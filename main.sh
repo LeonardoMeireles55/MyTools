@@ -4,7 +4,7 @@ scripts=(scripts/*.sh)
 
 display_menu() {
     echo "=========================="
-    echo "      My Bash Menu       "
+    echo "    Bash Tools Menu       "
     echo "=========================="
     i=1
     for script in "${scripts[@]}"; do
